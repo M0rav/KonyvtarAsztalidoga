@@ -7,36 +7,6 @@ import java.util.Scanner;
 
 public class Statisztika {
     private List<Konyv> konyvek = new ArrayList<>();
-    private Connection conn;
-    private String DB_DRIVER = "mysql";
-    private String DB_HOST = "localhost";
-    private String DB_PORT = "3306";
-    private String DB_DBNAME = "books";
-    private String DB_USER = "root";
-    private String DB_PASS = "";
-//beolvasás
-    public Statisztika() throws SQLException {
-        try {
-
-            Class.forName("com.mysql.jdbc.Driver");
-            String url = String.format("jdbc:%s://%s:%s/%s", DB_DRIVER, DB_HOST, DB_PORT, DB_DBNAME);
-            conn = DriverManager.getConnection(url, DB_USER, DB_PASS);
-            String sql = "SELECT * FROM books";
-            Statement stmt = conn.createStatement();
-            ResultSet result = stmt.executeQuery(sql);
-            while (result.next()) {
-                int id = result.getInt("id");
-                String title = result.getString("title");
-                String author = result.getString("author");
-                int publish_year = result.getInt("publish_year");
-                int page_count = result.getInt("page_count");
-                Konyv konyv = new Konyv(id, title, author, publish_year, page_count);
-                konyvek.add(konyv);
-            }
-            System.out.println("Ez a result:" + result);
-        } catch (ClassNotFoundException e) {
-        }
-    }
 //1. feladat
     public int otszaznalTobb() {
         int db = 0;

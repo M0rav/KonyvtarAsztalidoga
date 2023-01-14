@@ -10,10 +10,10 @@ public class Main {
             System.out.println("Van ötven évnél idősebb könyv?:" + s.idosebbeotvennel());
             System.out.println("A leghoszabb könyv:" + s.leghoszabb());
             System.out.println();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
-        catch (SQLException e){
-            e.printStackTrace();
-        }
+
 
     }
 }
